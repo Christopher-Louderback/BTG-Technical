@@ -35,7 +35,7 @@ namespace BTG_Technical
         }
     }
 
-    public class RecordMap : ClassMap<Record>
+    public class RecordMap : ClassMap<Record> //move into own file
     {
         public RecordMap()
         {
@@ -45,7 +45,7 @@ namespace BTG_Technical
             Map(m => m.Product).Name("Product");
             Map(m => m.Quantity).Name("Quantity");
             Map(m => m.UnitPrice).Name("UnitPrice");
-            Map(m => m.Total).Convert(args =>
+            Map(m => m.Total).Convert(args => //set to 0 and put in own file
             {
                 var quantity = args.Row.GetField<int>("Quantity");
                 var price = args.Row.GetField<decimal>("UnitPrice");

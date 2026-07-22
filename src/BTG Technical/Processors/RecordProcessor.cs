@@ -10,7 +10,7 @@
 
             foreach (Record record in data)
             {
-                if (record.Quantity > 0 && record.UnitPrice > 0) //TransactionDate validation here?
+                if (record.Quantity > 0 && record.UnitPrice > 0)
                 {
                     processedData.Add(record);
                     goodCount++;
