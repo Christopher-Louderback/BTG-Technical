@@ -1,37 +1,56 @@
-﻿namespace BTG_Technical
+﻿using CsvHelper;
+using CsvHelper.Configuration;
+using System.Globalization;
+
+namespace BTG_Technical
 {
     public class Reader
     {
         public static List<Record> ReadFile(string file)
         {
-            List<Record> records = new();
+            if (!File.Exists(file))
+                throw new FileNotFoundException($"Input file not found: {file}");
 
-            var lines = File.ReadLines(file);
-
-            foreach (var line in lines.Skip(1)) //skip column names
+            try
             {
-                try {
-                    var fields = line.Split(','); //Can upgrade to something that doesn't explode with commas, csvhelper?
-                    var record = new Record
-                    {
-                        TransactionDate = DateTime.Parse(fields[0]),
-                        CustomerId = fields[1],
-                        CustomerName = fields[2],
-                        Product = fields[3],
-                        Quantity = int.Parse(fields[4]),
-                        UnitPrice = decimal.Parse(fields[5]),
-                        Total = decimal.Parse(fields[4]) * decimal.Parse(fields[5])
-                    };
-                    records.Add(record);
-                }
-                catch (Exception ex)
+                using (var reader = new StreamReader(file))
+                using (var csv = new CsvReader(reader, CultureInfo.InvariantCulture))
                 {
-                    Console.WriteLine($"Error parsing line: {line}. Error: {ex.Message}");
+                    csv.Context.RegisterClassMap<RecordMap>();
+                    var records = csv.GetRecords<Record>().ToList();
+                    foreach (var r in records)
+                    {
+                        r.Total = r.Quantity * r.UnitPrice;
+                    }
+
+                    Console.WriteLine("Data read and extracted.");
+                    return records;
                 }
             }
+            catch (Exception ex)
+            {
+                throw new InvalidOperationException(
+                    $"Error reading CSV file: {file}", ex);
+            }
+        }
+    }
 
-            Console.WriteLine("Data read and extracted.");
-            return records;
+    public class RecordMap : ClassMap<Record>
+    {
+        public RecordMap()
+        {
+            Map(m => m.TransactionDate).Name("TransactionDate");
+            Map(m => m.CustomerId).Name("CustomerId");
+            Map(m => m.CustomerName).Name("CustomerName");
+            Map(m => m.Product).Name("Product");
+            Map(m => m.Quantity).Name("Quantity");
+            Map(m => m.UnitPrice).Name("UnitPrice");
+            Map(m => m.Total).Convert(args =>
+            {
+                var quantity = args.Row.GetField<int>("Quantity");
+                var price = args.Row.GetField<decimal>("UnitPrice");
+                return quantity * price;
+            });
         }
     }
 }
