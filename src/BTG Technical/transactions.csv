@@ -1,0 +1,3 @@
+TransactionDate,CustomerId,CustomerName,Product,Quantity,UnitPrice
+2026-01-01,C100,ABC Corp,Laptop,2,1500
+2026-01-02,C200,XYZ Inc,Monitor,3,250
