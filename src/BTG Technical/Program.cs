@@ -11,15 +11,13 @@ if (inputFile != null && outputFile != null)
     Console.WriteLine("Reading file and extracting data.");
     Reader reader = new Reader();
     List<Record> data = reader.ReadFile(inputFile);
-    Console.WriteLine("File read and data extracted. Processing data.");
+    Console.WriteLine("Processing data.");
     //Processor processor = new Processor(data);
+    Console.WriteLine("Outputting.");
+    //output call
 }
-//take args 0 and 1, 0 = csv, 1 = where writing to
 //assign to variable and pass to reader (di)
-//reader/extractor(?) assigns results to ds to pass to processor
 //pass product to writer
-
-
 
 /*
  * class to open + read

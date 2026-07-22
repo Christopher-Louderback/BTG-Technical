@@ -6,7 +6,7 @@
         {
             List<Record> records = new List<Record>();
 
-            var lines = File.ReadLines(file).ToList();//tolist needed?
+            var lines = File.ReadLines(file);
 
             foreach (var line in lines.Skip(1)) //skip column names
             { //try except?
@@ -23,6 +23,8 @@
                 };
                 records.Add(record);
             }
+
+            Console.WriteLine("Data read and extracted.");
             return records;
         }
     }
