@@ -2,10 +2,14 @@
 
 This program prompts the user for CSV structured in a certain way, and then extracts the data from the CSV, validates it, and provides it in JSON form.
 
-![Commit History](./docs/Screenshots/Screenshot 2026-07-22 040012.png)
+# Commit History
+![Screenshot](https://i.imgur.com/rB7pJ6j.png)
 
-![Pull Requests](./docs/Screenshots/Screenshot 2026-07-22 035706.png)
+# Pull Requests
+![Screenshot](https://i.imgur.com/COXXnNa.png)
 
-![A Pull Request](./docs/Screenshots/Screenshot 2026-07-22 031102.png)
+# A Pull Request
+![Screenshot](https://i.imgur.com/nY2mNl1.png)
 
-![Repository Structure](./docs/Screenshots/Screenshot 2026-07-22 035657.png)
+# Repo Structure
+![Screenshot](https://i.imgur.com/jMcq48d.png)
