@@ -1,6 +1,6 @@
 ## This program prompts the user for a CSV file, then extracts the data from the CSV, validates it, and provides it in JSON form.
 
-To run program: dotnet run --project "src/BTG Technical" -- "(target csv here)"
+To run program: dotnet run --project "src/BTG Technical" -- "(target csv here)"  
 To run with provided CSV in data folder: dotnet run --project "src/BTG Technical" -- "src/BTG Technical/data/transactions.csv"  
 To run tests: dotnet test  
 
