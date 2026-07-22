@@ -3,7 +3,7 @@
     /// <summary>
     /// A record of a transaction.
     /// </summary>
-    internal class Record
+    public class Record
     {
         /// <summary>
         /// The date of the transaction.
@@ -12,15 +12,15 @@
         /// <summary>
         /// The ID of the customer.
         /// </summary>
-        public int CustomerId { get; set; }
+        public required string CustomerId { get; set; }
         /// <summary>
         /// The name of the customer.
         /// </summary>
-        public string? CustomerName { get; set; }
+        public required string CustomerName { get; set; }
         /// <summary>
         /// The product name.
         /// </summary>
-        public string? Product { get; set; }
+        public required string Product { get; set; }
         /// <summary>
         /// The number of items in the transaction.
         /// </summary>

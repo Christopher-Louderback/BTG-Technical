@@ -1,20 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Text.Json;
 
 namespace BTG_Technical
 {
-    internal class Writer
-    { //need to clean json indents etc. (review)
-        internal void Write(string file, List<Record> data)
+    public class Writer
+    {
+        public static readonly JsonSerializerOptions Options = new()
         {
-            var json = System.Text.Json.JsonSerializer.Serialize(data);
+            WriteIndented = true,
+            PropertyNamingPolicy = JsonNamingPolicy.CamelCase //standard
+        };
+        public static void Write(string file, List<Record> data)
+        {
+            var json = JsonSerializer.Serialize(data, Options);
             File.WriteAllText(file, json);
             Console.WriteLine($"Data written to {file}.");
         }
     }
-    //write output to file
-    //Produce JSON output containing the transformed records.
 }

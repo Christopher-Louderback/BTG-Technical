@@ -1,28 +1,17 @@
 ﻿using BTG_Technical;
 
-Console.WriteLine("Enter input file.");
-string? inputFile = Console.ReadLine();
-Console.WriteLine("Enter output file.");
-string? outputFile = Console.ReadLine();
+Console.WriteLine("Enter input file."); //Prompt user for target files and assign to variables. hardcoding here just for testing
+string? inputFile = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "..", "..", "..", "transactions.csv");
+string? outputFile = Path.ChangeExtension(inputFile, ".json");//convention is apparently to keep file name, can do this and just have it overwrite what's in there now if it already exists
 
-
-if (inputFile != null && outputFile != null)
+if (!string.IsNullOrWhiteSpace(inputFile))
 {
-    Console.WriteLine("Reading file and extracting data.");
-    Reader reader = new Reader();
-    List<Record> data = reader.ReadFile(inputFile);
-    Console.WriteLine("Processing data.");
-    //Processor processor = new Processor(data);
-    Console.WriteLine("Outputting.");
-    //output call
-}
-//assign to variable and pass to reader (di)
-//pass product to writer
+    Console.WriteLine("Reading file and extracting data.");//read and extract data
+    List<Record> data = Reader.ReadFile(inputFile);
 
-/*
- * class to open + read
- * prompt user for file name, generate output file
- * class to extract
- * call all in main
- * class to validate and calculate
- * class to produce json output*/
+    Console.WriteLine("Processing data.");//process/validate data
+    List<Record> processedData = Processor.Process(data);
+
+    Console.WriteLine("Creating JSON.");//write json to file
+    Writer.Write(outputFile, processedData);
+}

@@ -1,27 +1,33 @@
 ﻿namespace BTG_Technical
 {
-    internal class Reader
+    public class Reader
     {
-        public List<Record> ReadFile(string file)
+        public static List<Record> ReadFile(string file)
         {
-            List<Record> records = new List<Record>();
+            List<Record> records = new();
 
             var lines = File.ReadLines(file);
 
             foreach (var line in lines.Skip(1)) //skip column names
-            { //try except?
-                var fields = line.Split(','); //could break, can improve this later
-                var record = new Record
+            {
+                try {
+                    var fields = line.Split(','); //Can upgrade to something that doesn't explode with commas, csvhelper?
+                    var record = new Record
+                    {
+                        TransactionDate = DateTime.Parse(fields[0]),
+                        CustomerId = fields[1],
+                        CustomerName = fields[2],
+                        Product = fields[3],
+                        Quantity = int.Parse(fields[4]),
+                        UnitPrice = decimal.Parse(fields[5]),
+                        Total = decimal.Parse(fields[4]) * decimal.Parse(fields[5])
+                    };
+                    records.Add(record);
+                }
+                catch (Exception ex)
                 {
-                    TransactionDate = DateTime.Parse(fields[0]),
-                    CustomerId = int.Parse(fields[1]),
-                    CustomerName = fields[2],
-                    Product = fields[3],
-                    Quantity = int.Parse(fields[4]),
-                    UnitPrice = decimal.Parse(fields[5]),
-                    Total = int.Parse(fields[4]) * decimal.Parse(fields[5])
-                };
-                records.Add(record);
+                    Console.WriteLine($"Error parsing line: {line}. Error: {ex.Message}");
+                }
             }
 
             Console.WriteLine("Data read and extracted.");

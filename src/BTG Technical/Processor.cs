@@ -1,8 +1,8 @@
 ﻿namespace BTG_Technical
 {
-    internal class Processor
+    public class Processor
     {
-        internal List<Record> Process (List<Record> data)
+        public static List<Record> Process (List<Record> data)
         {
             List<Record> processedData = new List<Record>();
             int goodCount = 0;
@@ -10,7 +10,7 @@
 
             foreach (Record record in data)
             {
-                if (true && record.Quantity > 0 && record.UnitPrice > 0) //Think about transactiondate validation
+                if (record.Quantity > 0 && record.UnitPrice > 0) //TransactionDate validation here?
                 {
                     processedData.Add(record);
                     goodCount++;
