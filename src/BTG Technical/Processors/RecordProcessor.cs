@@ -1,6 +1,6 @@
 ﻿namespace BTG_Technical
 {
-    public class Processor
+    public class RecordProcessor
     {
         public static List<Record> Process (List<Record> data)
         {

@@ -1,0 +1,20 @@
+[
+  {
+    "transactionDate": "2026-01-01T00:00:00",
+    "customerId": "C100",
+    "customerName": "ABC Corp",
+    "product": "Laptop",
+    "quantity": 2,
+    "unitPrice": 1500,
+    "total": 3000
+  },
+  {
+    "transactionDate": "2026-01-02T00:00:00",
+    "customerId": "C200",
+    "customerName": "XYZ Inc",
+    "product": "Monitor",
+    "quantity": 3,
+    "unitPrice": 250,
+    "total": 750
+  }
+]
