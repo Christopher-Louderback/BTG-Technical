@@ -30,7 +30,7 @@
         /// </summary>
         public decimal UnitPrice { get; set; }
         /// <summary>
-        /// The total price (Quantity * UnitPrice.
+        /// The total price (Quantity * UnitPrice.)
         /// </summary>
         public decimal Total { get; set; }
     }
