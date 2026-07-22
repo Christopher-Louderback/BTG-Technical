@@ -6,21 +6,21 @@ if (args.Length == 0)
     return;
 }
 
-string? inputFile = args[0]; //read parameter from user input and assign to variable
+string? inputFile = args[0];
 
 if (!File.Exists(inputFile))
 {
-    Console.Error.WriteLine($"Error: File not found: {inputFile}");
+    Console.Error.WriteLine($"Error: File {inputFile} not found.");
     return;
 }
 
-string outputFile = Path.ChangeExtension(inputFile, ".json");//convention is apparently to keep file name
+string outputFile = Path.ChangeExtension(inputFile, ".json");
 
-Console.WriteLine("Reading file and extracting data.");//read and extract data
+Console.WriteLine("Reading file and extracting data.");
 List<Record> data = Reader.ReadFile(inputFile);
 
-Console.WriteLine("Processing data.");//process/validate data
+Console.WriteLine("Processing data.");
 List<Record> processedData = RecordProcessor.Process(data);
 
-Console.WriteLine("Creating JSON.");//write json to file
+Console.WriteLine("Creating JSON.");
 Writer.Write(outputFile, processedData);

@@ -5,6 +5,11 @@ namespace BTG_Technical
 {
     public class Reader
     {
+        /// <summary>
+        /// Reads a CSV file and extracts the data into a list of records.
+        /// </summary>
+        /// <param name="file">The file to read and extract from.</param>
+        /// <returns>The list of records.</returns>
         public static List<Record> ReadFile(string file)
         {
             try

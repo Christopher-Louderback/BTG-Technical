@@ -2,6 +2,11 @@
 {
     public class RecordProcessor
     {
+        /// <summary>
+        /// Works through a list of records, checking for valid quantities and prices, only copying if valid.
+        /// </summary>
+        /// <param name="data">The data to process.</param>
+        /// <returns>The processed data.</returns>
         public static List<Record> Process (List<Record> data)
         {
             List<Record> processedData = new List<Record>();
