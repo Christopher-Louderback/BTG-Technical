@@ -1,3 +1,4 @@
 <Solution>
   <Project Path="src/BTG Technical/BTG Technical.csproj" />
+  <Project Path="tests/BTG Technical.Tests/BTG Technical.Tests.csproj" />
 </Solution>

@@ -9,7 +9,7 @@ namespace BTG_Technical
         public static List<Record> ReadFile(string file)
         {
             if (!File.Exists(file))
-                throw new FileNotFoundException($"Input file not found: {file}");
+                throw new FileNotFoundException($"Input file {file} not found.");
 
             try
             {
